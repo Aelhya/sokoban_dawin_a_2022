@@ -2,13 +2,31 @@ package com.example.sokoban;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    Button buttonNiveauUn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        buttonNiveauUn = findViewById(R.id.buttonNiveau1);
+        buttonNiveauUn.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == buttonNiveauUn.getId()) {
+            Intent niveauDefaut = new Intent(this, Default.class);
+            startActivity(niveauDefaut);
+        } else {
+            throw new IllegalStateException("Unexpected value: " + view.getId());
+        }
     }
 }
