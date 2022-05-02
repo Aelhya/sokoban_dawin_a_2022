@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Sokoban</string>
+    <string name="app_niveau_un">Plateau par défaut</string>
+    <string name="app_niveau_deux">Plateau fait en fichier texte</string>
+    <string name="app_niveau_trois">Plateau stocké en BDD</string>
+    <string name="app_niveau_quatre">Plateau avec une API</string>
+    <string name="app_developpeur">Adélaïde LOUIS, Arthur QUEMERAS, Kim-Anh TRAN</string>
+    <string name="app_developpeur_group">LP DAWIN A</string>
 </resources>
