@@ -22,6 +22,8 @@ public class Default extends AppCompatActivity {
     int pos = 27;
     Button reset;
 
+    int largeur = 4;
+    int longueur = 8;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -205,10 +207,45 @@ public class Default extends AppCompatActivity {
                 gridView.invalidateViews();
             }
         });
-        gridView=findViewById(R.id.gridView);
+        // transformer la grid view en matrice -> tableau 2D
+        int[][] matrix = arrayToMatrix(images);
+        printMatrix(matrix);
 
+        gridView=findViewById(R.id.gridView);
         GridAdapter gridAdapter = new GridAdapter(Default.this,name,images);
         gridView.setAdapter(gridAdapter);
+    }
 
+    /**
+     * Convertir un tableau 1D en matrice
+     * @param images tableau 1D
+     * @return un tableau 2D
+     */
+    public int[][] arrayToMatrix(int[] images){
+        int[][] grid = new int[largeur][longueur];
+        try {
+            for(int i=0; i<images.length; i+=largeur){ // ligne : y
+                for(int j=0; j<longueur; j++){ // col : x
+                    int itemIndex = (i/largeur)*longueur+j;
+                    grid[(i/largeur)][j] = images[itemIndex];
+                }
+            }
+        }catch (Exception e){
+            System.err.println(e);
+        }
+        return grid;
+    }
+
+    /**
+     * Afficher la matrice
+     * @param matrix
+     */
+    public void printMatrix(int[][] matrix){
+        for(int i=0;i<largeur;i++){//ligne : y
+            for(int j=0;j<longueur;j++){//col : x
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println(" ");
+        }
     }
 }
