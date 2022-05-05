@@ -71,11 +71,11 @@ public class Default extends AppCompatActivity {
         imgGauche.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (name[pos-1]  == "wall") {
+                if (name[pos - 1].equals("wall")) {
 
                 }
-                else if (name[pos-1] == "caisse"){
-                    if(name[pos-2] == "wall" || name[pos-2] == "caisse"){
+                else if (name[pos - 1].equals("caisse")){
+                    if(name[pos - 2].equals("wall") || name[pos-2] .equals("caisse")){
 
                     }
                     else{
@@ -102,11 +102,11 @@ public class Default extends AppCompatActivity {
         imgDroite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (name[pos+1]  == "wall") {
+                if (name[pos + 1].equals("wall")) {
 
                 }
-                else if(name[pos+1] == "caisse"){
-                    if(name[pos+2] == "wall" || name[pos+2] == "caisse"){
+                else if(name[pos + 1].equals("caisse")){
+                    if(name[pos + 2].equals("wall") || name[pos+2] .equals("caisse")){
 
                     }
                     else{
@@ -133,11 +133,11 @@ public class Default extends AppCompatActivity {
         imgHaut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (name[pos-8]  == "wall") {
+                if (name[pos - 8].equals("wall")) {
 
                 }
-                else if(name[pos-8] == "caisse"){
-                    if(name[pos-16] == "wall" || name[pos-16] == "caisse"){
+                else if(name[pos - 8].equals("caisse")){
+                    if(name[pos - 16].equals("wall")|| name[pos-16] .equals("caisse")){
 
                     }
                     else{
@@ -164,11 +164,11 @@ public class Default extends AppCompatActivity {
         imgBas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (name[pos+8]  == "wall") {
+                if (name[pos + 8].equals("wall")) {
 
                 }
-                else if(name[pos+8] == "caisse"){
-                    if(name[pos+16] == "wall" || name[pos+16] == "caisse"){
+                else if(name[pos + 8].equals("caisse")){
+                    if(name[pos + 16].equals("wall") || name[pos+16] .equals("caisse")){
 
                     }
                     else{
