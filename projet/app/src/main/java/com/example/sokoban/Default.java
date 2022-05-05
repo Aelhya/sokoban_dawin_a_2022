@@ -2,9 +2,6 @@ package com.example.sokoban;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.media.Image;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,7 +19,7 @@ public class Default extends AppCompatActivity {
     int pos = 27;
     Button reset;
 
-    int largeur = 4;
+    int largeur = 8;
     int longueur = 8;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +30,6 @@ public class Default extends AppCompatActivity {
         imgHaut = findViewById(R.id.touche_haut);
         imgBas = findViewById(R.id.touche_bas);
         reset = findViewById(R.id.reset);
-
 
         String[] name = {"wall","wall","wall","wall","wall","wall","wall","wall",
                 "wall","floor","floor","floor","floor","floor","floor","wall",
@@ -75,11 +71,11 @@ public class Default extends AppCompatActivity {
         imgGauche.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (name[pos-1]  == "wall") {
+                if (name[pos - 1].equals("wall")) {
 
                 }
-                else if (name[pos-1] == "caisse"){
-                    if(name[pos-2] == "wall"){
+                else if (name[pos - 1].equals("caisse")){
+                    if(name[pos - 2].equals("wall")){
 
                     }
                     else{
@@ -106,11 +102,11 @@ public class Default extends AppCompatActivity {
         imgDroite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (name[pos+1]  == "wall") {
+                if (name[pos + 1].equals("wall")) {
 
                 }
-                else if(name[pos+1] == "caisse"){
-                    if(name[pos+2] == "wall"){
+                else if(name[pos + 1].equals("caisse")){
+                    if(name[pos + 2].equals("wall")){
 
                     }
                     else{
@@ -137,11 +133,11 @@ public class Default extends AppCompatActivity {
         imgHaut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (name[pos-8]  == "wall") {
+                if (name[pos - 8].equals("wall")) {
 
                 }
-                else if(name[pos-8] == "caisse"){
-                    if(name[pos-16] == "wall"){
+                else if(name[pos - 8].equals("caisse")){
+                    if(name[pos - 16].equals("wall")){
 
                     }
                     else{
@@ -168,11 +164,11 @@ public class Default extends AppCompatActivity {
         imgBas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (name[pos+8]  == "wall") {
+                if (name[pos + 8].equals("wall")) {
 
                 }
-                else if(name[pos+8] == "caisse"){
-                    if(name[pos+16] == "wall"){
+                else if(name[pos + 8].equals("caisse")){
+                    if(name[pos + 16].equals("wall")){
 
                     }
                     else{
