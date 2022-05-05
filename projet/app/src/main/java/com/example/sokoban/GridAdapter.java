@@ -6,21 +6,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-
+import android.widget.TextView;
 
 public class GridAdapter extends BaseAdapter {
 
     Context context;
+    String[] name;
     int[] image;
     LayoutInflater inflater;
-    public GridAdapter(Context context, int[] image){
+    public GridAdapter(Context context,String[] name, int[] image){
         this.context = context;
+        this.name = name;
         this.image = image;
     }
 
     @Override
     public int getCount() {
-        return 0;
+        return name.length;
     }
 
     @Override
@@ -43,10 +45,13 @@ public class GridAdapter extends BaseAdapter {
         }
 
         ImageView imageView = view.findViewById(R.id.grid_image);
+        TextView textView = view.findViewById(R.id.item_name);
 
         imageView.setImageResource(image[i]);
+        textView.setText(name[i]);
 
         return view;
     }
 }
+
 

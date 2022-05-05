@@ -13,6 +13,15 @@ public class Default extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_default);
 
+        String[] name = {"wall","wall","wall","wall","wall","wall","wall","wall",
+                "wall","floor","floor","floor","floor","floor","floor","wall",
+                "wall","floor","floor","floor","floor","floor","floor","wall",
+                "wall","floor","floor","floor","floor","floor","floor","wall",
+                "wall","floor","floor","floor","floor","floor","floor","wall",
+                "wall","floor","floor","floor","floor","floor","floor","wall",
+                "wall","floor","floor","floor","floor","floor","floor","wall",
+                "wall","wall","wall","wall","wall","wall","wall","wall"};
+
         int[] images = {R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,
                 R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,
                 R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,
@@ -24,7 +33,7 @@ public class Default extends AppCompatActivity {
 
         gridView=findViewById(R.id.gridView);
 
-        GridAdapter gridAdapter = new GridAdapter(Default.this,images);
+        GridAdapter gridAdapter = new GridAdapter(Default.this,name,images);
         gridView.setAdapter(gridAdapter);
     }
 }
