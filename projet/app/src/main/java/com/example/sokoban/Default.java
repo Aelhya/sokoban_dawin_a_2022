@@ -2,9 +2,6 @@ package com.example.sokoban;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.media.Image;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,7 +19,7 @@ public class Default extends AppCompatActivity {
     int pos = 27;
     Button reset;
 
-    int largeur = 4;
+    int largeur = 8;
     int longueur = 8;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +30,6 @@ public class Default extends AppCompatActivity {
         imgHaut = findViewById(R.id.touche_haut);
         imgBas = findViewById(R.id.touche_bas);
         reset = findViewById(R.id.reset);
-
 
         String[] name = {"wall","wall","wall","wall","wall","wall","wall","wall",
                 "wall","floor","floor","floor","floor","floor","floor","wall",
