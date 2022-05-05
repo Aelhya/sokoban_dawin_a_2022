@@ -76,7 +76,7 @@ public class Default extends AppCompatActivity {
                 if (name[pos-1]  == "wall") {
 
                 }
-                if(name[pos-1] == "caisse"){
+                else if (name[pos-1] == "caisse"){
                     if(name[pos-2] == "wall"){
 
                     }
@@ -107,7 +107,7 @@ public class Default extends AppCompatActivity {
                 if (name[pos+1]  == "wall") {
 
                 }
-                if(name[pos+1] == "caisse"){
+                else if(name[pos+1] == "caisse"){
                     if(name[pos+2] == "wall"){
 
                     }
@@ -138,7 +138,7 @@ public class Default extends AppCompatActivity {
                 if (name[pos-8]  == "wall") {
 
                 }
-                if(name[pos-8] == "caisse"){
+                else if(name[pos-8] == "caisse"){
                     if(name[pos-16] == "wall"){
 
                     }
@@ -169,7 +169,7 @@ public class Default extends AppCompatActivity {
                 if (name[pos+8]  == "wall") {
 
                 }
-                if(name[pos+8] == "caisse"){
+                else if(name[pos+8] == "caisse"){
                     if(name[pos+16] == "wall"){
 
                     }
