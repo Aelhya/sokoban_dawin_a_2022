@@ -6,4 +6,63 @@
     android:layout_height="match_parent"
     tools:context=".Default">
 
+    <ImageView
+        android:id="@+id/imageCarreBlanc"
+        android:layout_width="48dp"
+        android:layout_height="55dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.849"
+        app:srcCompat="@drawable/ic_carre_blanc" />
+
+    <ImageView
+        android:id="@+id/touche_bas"
+        android:layout_width="71dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageCarreBlanc"
+        app:srcCompat="@drawable/fleche_directionnelle" />
+
+    <ImageView
+        android:id="@+id/touche_gauche"
+        android:layout_width="71dp"
+        android:layout_height="65dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="92dp"
+        android:rotation="90"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageCarreBlanc"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/fleche_directionnelle" />
+
+    <ImageView
+        android:id="@+id/touche_haut"
+        android:layout_width="71dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="4dp"
+        android:rotation="180"
+        app:layout_constraintBottom_toTopOf="@+id/imageCarreBlanc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/fleche_directionnelle" />
+
+    <ImageView
+        android:id="@+id/touche_droite"
+        android:layout_width="71dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="92dp"
+        android:rotation="-90"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imageCarreBlanc"
+        app:srcCompat="@drawable/fleche_directionnelle" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
