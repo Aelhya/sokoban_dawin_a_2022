@@ -38,7 +38,7 @@ public class Default extends AppCompatActivity {
                 "wall","floor","wall","floor","wall","floor","floor","wall",
                 "wall","floor","floor","player","caisse","floor","floor","wall",
                 "wall","floor","wall","wall","floor","floor","floor","wall",
-                "wall","floor","wall","wall","floor","floor","floor","wall",
+                "wall","floor","wall","wall","floor","caisse","floor","wall",
                 "wall","floor","floor","floor","floor","floor","floor","wall",
                 "wall","wall","wall","wall","wall","wall","wall","wall"};
         String[] name2 = {"wall","wall","wall","wall","wall","wall","wall","wall",
@@ -46,7 +46,7 @@ public class Default extends AppCompatActivity {
                 "wall","floor","wall","floor","wall","floor","floor","wall",
                 "wall","floor","floor","player","caisse","floor","floor","wall",
                 "wall","floor","wall","wall","floor","floor","floor","wall",
-                "wall","floor","wall","wall","floor","floor","floor","wall",
+                "wall","floor","wall","wall","floor","caisse","floor","wall",
                 "wall","floor","floor","floor","floor","floor","floor","wall",
                 "wall","wall","wall","wall","wall","wall","wall","wall"};
 
@@ -55,7 +55,7 @@ public class Default extends AppCompatActivity {
                 R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,
                 R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_ball_haut,R.drawable.ic_bloc_a_deplacer,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,
                 R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,
-                R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,
+                R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_a_deplacer,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,
                 R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,
                 R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur};
 
@@ -65,7 +65,7 @@ public class Default extends AppCompatActivity {
                 R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,
                 R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_ball_haut,R.drawable.ic_bloc_a_deplacer,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,
                 R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,
-                R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,
+                R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_a_deplacer,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,
                 R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,
                 R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur};
 
@@ -77,7 +77,7 @@ public class Default extends AppCompatActivity {
 
                 }
                 else if (name[pos-1] == "caisse"){
-                    if(name[pos-2] == "wall"){
+                    if(name[pos-2] == "wall" || name[pos-2] == "caisse"){
 
                     }
                     else{
@@ -108,7 +108,7 @@ public class Default extends AppCompatActivity {
 
                 }
                 else if(name[pos+1] == "caisse"){
-                    if(name[pos+2] == "wall"){
+                    if(name[pos+2] == "wall" || name[pos+2] == "caisse"){
 
                     }
                     else{
@@ -139,7 +139,7 @@ public class Default extends AppCompatActivity {
 
                 }
                 else if(name[pos-8] == "caisse"){
-                    if(name[pos-16] == "wall"){
+                    if(name[pos-16] == "wall" || name[pos-16] == "caisse"){
 
                     }
                     else{
@@ -170,7 +170,7 @@ public class Default extends AppCompatActivity {
 
                 }
                 else if(name[pos+8] == "caisse"){
-                    if(name[pos+16] == "wall"){
+                    if(name[pos+16] == "wall" || name[pos+16] == "caisse"){
 
                     }
                     else{
