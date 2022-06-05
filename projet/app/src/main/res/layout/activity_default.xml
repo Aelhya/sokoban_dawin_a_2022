@@ -7,10 +7,15 @@
     tools:context=".Default">
 
     <GridView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:id="@+id/gridView"
-        android:numColumns="8" >
+        android:layout_width="414dp"
+        android:layout_height="498dp"
+        android:numColumns="8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
     </GridView>
 
@@ -77,8 +82,12 @@
         android:id="@+id/reset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="66dp"
-        tools:layout_editor_absoluteY="673dp" />
+        android:text="@string/reset"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.949"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridView"
+        app:layout_constraintVertical_bias="0.843" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

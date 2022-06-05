@@ -19,11 +19,22 @@ public class Default extends AppCompatActivity {
     // placement de base du personnage
     int posX = 3;
     int posY = 3;
+    int[][] matrix;
     Button reset;
 
     // valeur par défaut
     int largeur = 8;
     int longueur = 8;
+    // tableau initial
+    int[] images = {R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,
+            R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,
+            R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,
+            R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_ball_haut,R.drawable.ic_bloc_a_deplacer,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,
+            R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,
+            R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_a_deplacer,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,
+            R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,
+            R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,28 +45,8 @@ public class Default extends AppCompatActivity {
         imgBas = findViewById(R.id.touche_bas);
         reset = findViewById(R.id.reset);
 
-        int[] images = {R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,
-                R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,
-                R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,
-                R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_ball_haut,R.drawable.ic_bloc_a_deplacer,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,
-                R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,
-                R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_a_deplacer,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,
-                R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,
-                R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur};
-
-        // pour reset le jeu
-        int[] images2 = {R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,
-                R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,
-                R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,
-                R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_ball_haut,R.drawable.ic_bloc_a_deplacer,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,
-                R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,
-                R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_a_deplacer,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,
-                R.drawable.ic_bloc_mur,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_carre_blanc,R.drawable.ic_bloc_mur,
-                R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur,R.drawable.ic_bloc_mur};
-
         // transformer la grid view en matrice -> tableau 2D
-        int[][] matrix = arrayToMatrix(images);
-        printMatrix(matrix);
+        matrix = arrayToMatrix(images);
 
         gridView=findViewById(R.id.gridView);
         GridAdapter gridAdapter = new GridAdapter(Default.this, images);
@@ -93,24 +84,28 @@ public class Default extends AppCompatActivity {
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.arraycopy(images2, 0, images, 0, images.length);
+                int[][] resetMatrix = arrayToMatrix(images);
+                updateGridView(resetMatrix, gridAdapter);
+                printMatrix(matrix);
                 gridView.invalidateViews();
+                System.out.println("reset ");
+                printMatrix(resetMatrix);
             }
         });
     }
 
     /**
      * Convertir un tableau 1D en matrice
-     * @param images tableau 1D
+     * @param tabImages int[] tableau 1D
      * @return un tableau 2D
      */
-    public int[][] arrayToMatrix(int[] images){
+    public int[][] arrayToMatrix(int[] tabImages){
         int[][] grid = new int[largeur][longueur];
         try {
-            for(int i=0; i<images.length; i+=largeur){ // ligne : y
+            for(int i=0; i<tabImages.length; i+=largeur){ // ligne : y
                 for(int j=0; j<longueur; j++){ // col : x
                     int itemIndex = (i/largeur)*longueur+j;
-                    grid[(i/largeur)][j] = images[itemIndex];
+                    grid[(i/largeur)][j] = tabImages[itemIndex];
                 }
             }
         }catch (Exception e){
@@ -121,7 +116,7 @@ public class Default extends AppCompatActivity {
 
     /**
      * Afficher la matrice
-     * @param matrix
+     * @param matrix int[][]
      */
     public void printMatrix(int[][] matrix){
         for(int i=0;i<largeur;i++){//ligne : y
@@ -166,8 +161,8 @@ public class Default extends AppCompatActivity {
      * Mettre à jour l'affichage avec matrice 2D
      */
     public void updateGridView(int[][] matrix, GridAdapter gridAdapter){
-        int [] image = matrixToArray(matrix);
-        gridAdapter.setItems(image);
+        int[] tabImages = matrixToArray(matrix);
+        gridAdapter.setItems(tabImages);
         gridAdapter.notifyDataSetChanged();
     }
 
