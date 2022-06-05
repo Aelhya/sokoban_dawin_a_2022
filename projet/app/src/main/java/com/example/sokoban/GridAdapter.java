@@ -11,47 +11,45 @@ import android.widget.TextView;
 public class GridAdapter extends BaseAdapter {
 
     Context context;
-    String[] name;
     int[] image;
     LayoutInflater inflater;
-    public GridAdapter(Context context,String[] name, int[] image){
+    public GridAdapter(Context context, int[] image){
         this.context = context;
-        this.name = name;
         this.image = image;
     }
 
     @Override
     public int getCount() {
-        return name.length;
+        return image.length;
     }
 
     @Override
     public Object getItem(int i) {
-        return null;
+        return image[i];
     }
 
     @Override
     public long getItemId(int i) {
-        return 0;
+        return i;
     }
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        if(inflater == null)
-            inflater = (LayoutInflater)  context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
+        View gridView = view;
         if(view == null){
-            view = inflater.inflate(R.layout.grid_item,null);
+            inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            gridView = inflater.inflate(R.layout.grid_item, null);
         }
-
-        ImageView imageView = view.findViewById(R.id.grid_image);
-        TextView textView = view.findViewById(R.id.item_name);
-
-        imageView.setImageResource(image[i]);
-        textView.setText(name[i]);
-
-        return view;
+        //Récuperer l'image issue des ressources
+        ImageView img = gridView.findViewById(R.id.grid_image);
+        img.setImageResource(image[i]);
+        return gridView;
     }
+
+    public void setItems(int[] im){
+        this.image = im;
+    }
+
 }
 
 
