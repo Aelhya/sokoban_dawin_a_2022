@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -23,6 +24,8 @@ public class Default extends AppCompatActivity {
     public int characterDownImg = R.drawable.ic_balle_bas;
     public int characterLeftImg = R.drawable.ic_balle_gauche;
     public int characterRightImg = R.drawable.ic_balle_droite;
+    public ImageView imgGauche, imgDroite, imgHaut, imgBas, imgCarreBlanc;
+    public TextView textFinished;
 
     // valeurs par défaut
     private boolean isFinished = false;
@@ -49,10 +52,13 @@ public class Default extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_default);
         // les images des boutons
-        ImageView imgGauche = findViewById(R.id.touche_gauche);
-        ImageView imgDroite = findViewById(R.id.touche_droite);
-        ImageView imgHaut = findViewById(R.id.touche_haut);
-        ImageView imgBas = findViewById(R.id.touche_bas);
+        imgGauche = findViewById(R.id.touche_gauche);
+        imgDroite = findViewById(R.id.touche_droite);
+        imgHaut = findViewById(R.id.touche_haut);
+        imgBas = findViewById(R.id.touche_bas);
+        imgCarreBlanc = findViewById(R.id.imageCarreBlanc);
+        textFinished = findViewById(R.id.textFinished);
+        textFinished.setVisibility(View.INVISIBLE);
         Button reset = findViewById(R.id.reset);
 
         // transformer la grid view en matrice (tableau 2D)
@@ -105,6 +111,12 @@ public class Default extends AppCompatActivity {
                 posY = 3;
                 oldPosX = 3;
                 oldPosY = 3;
+                imgDroite.setVisibility(View.VISIBLE);
+                imgHaut.setVisibility(View.VISIBLE);
+                imgGauche.setVisibility(View.VISIBLE);
+                imgBas.setVisibility(View.VISIBLE);
+                imgCarreBlanc.setVisibility(View.VISIBLE);
+                textFinished.setVisibility(View.INVISIBLE);
             }
         });
     }
@@ -167,6 +179,12 @@ public class Default extends AppCompatActivity {
             // TODO : indiquer au joueur qu'il a réussi le niveau
             // enlever les boutons et mettre un texte + bouton au menu ?
             System.out.println("FINI !!");
+            imgDroite.setVisibility(View.INVISIBLE);
+            imgHaut.setVisibility(View.INVISIBLE);
+            imgGauche.setVisibility(View.INVISIBLE);
+            imgBas.setVisibility(View.INVISIBLE);
+            imgCarreBlanc.setVisibility(View.INVISIBLE);
+            textFinished.setVisibility(View.VISIBLE);
         }
     }
 
