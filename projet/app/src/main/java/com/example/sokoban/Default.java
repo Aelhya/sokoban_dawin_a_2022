@@ -37,15 +37,16 @@ public class Default extends AppCompatActivity {
     // taille du plateau
     private final int largeur = 8;
     private final int longueur = 8;
-    private final int[] images = {R.drawable.ic_bloc_mur, R.drawable.ic_bloc_mur, R.drawable.ic_bloc_mur, R.drawable.ic_bloc_mur, R.drawable.ic_bloc_mur, R.drawable.ic_bloc_mur, R.drawable.ic_bloc_mur, R.drawable.ic_bloc_mur,
-            R.drawable.ic_bloc_mur, R.drawable.ic_launcher_background, R.drawable.ic_carre_blanc, R.drawable.ic_carre_blanc, R.drawable.ic_carre_blanc, R.drawable.ic_carre_blanc, R.drawable.ic_carre_blanc, R.drawable.ic_bloc_mur,
-            R.drawable.ic_bloc_mur, R.drawable.ic_carre_blanc, R.drawable.ic_bloc_mur, R.drawable.ic_carre_blanc, R.drawable.ic_bloc_mur, R.drawable.ic_carre_blanc, R.drawable.ic_carre_blanc, R.drawable.ic_bloc_mur,
-            R.drawable.ic_bloc_mur, R.drawable.ic_carre_blanc, R.drawable.ic_carre_blanc, R.drawable.ic_balle_haut, R.drawable.ic_bloc_a_deplacer, R.drawable.ic_carre_blanc, R.drawable.ic_carre_blanc, R.drawable.ic_bloc_mur,
-            R.drawable.ic_bloc_mur, R.drawable.ic_carre_blanc, R.drawable.ic_bloc_mur, R.drawable.ic_bloc_mur, R.drawable.ic_carre_blanc, R.drawable.ic_carre_blanc, R.drawable.ic_carre_blanc, R.drawable.ic_bloc_mur,
-            R.drawable.ic_bloc_mur, R.drawable.ic_carre_blanc, R.drawable.ic_bloc_mur, R.drawable.ic_bloc_mur, R.drawable.ic_carre_blanc, R.drawable.ic_bloc_a_deplacer, R.drawable.ic_launcher_background, R.drawable.ic_bloc_mur,
-            R.drawable.ic_bloc_mur, R.drawable.ic_carre_blanc, R.drawable.ic_carre_blanc, R.drawable.ic_carre_blanc, R.drawable.ic_carre_blanc, R.drawable.ic_carre_blanc, R.drawable.ic_carre_blanc, R.drawable.ic_bloc_mur,
-            R.drawable.ic_bloc_mur, R.drawable.ic_bloc_mur, R.drawable.ic_bloc_mur, R.drawable.ic_bloc_mur, R.drawable.ic_bloc_mur, R.drawable.ic_bloc_mur, R.drawable.ic_bloc_mur, R.drawable.ic_bloc_mur};
+    private final int[] images = {wallImg, wallImg, wallImg, wallImg, wallImg, wallImg, wallImg, wallImg,
+            wallImg, targetImg, whiteImg, whiteImg, whiteImg, whiteImg, whiteImg, wallImg,
+            wallImg, whiteImg, wallImg, whiteImg, wallImg, whiteImg, whiteImg, wallImg,
+            wallImg, whiteImg, whiteImg, characterUpImg, blockImg, whiteImg, whiteImg, wallImg,
+            wallImg, whiteImg, wallImg, wallImg, whiteImg, whiteImg, whiteImg, wallImg,
+            wallImg, whiteImg, wallImg, wallImg, whiteImg, blockImg, targetImg, wallImg,
+            wallImg, whiteImg, whiteImg, whiteImg, whiteImg, whiteImg, whiteImg, wallImg,
+            wallImg, wallImg, wallImg, wallImg, wallImg, wallImg, wallImg, wallImg};
     public int[][] matrix;
+    private MatrixUtils matrixUtils = new MatrixUtils(largeur, longueur);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +63,7 @@ public class Default extends AppCompatActivity {
         Button reset = findViewById(R.id.reset);
 
         // transformer la grid view en matrice (tableau 2D)
-        matrix = arrayToMatrix(images);
+        matrix = matrixUtils.arrayToMatrix(images);
 
         gridView = findViewById(R.id.gridView);
         GridAdapter gridAdapter = new GridAdapter(Default.this, images);
@@ -103,7 +104,7 @@ public class Default extends AppCompatActivity {
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int[][] newMatrix = arrayToMatrix(images);
+                int[][] newMatrix = matrixUtils.arrayToMatrix(images);
                 updateGridView(newMatrix, gridAdapter);
                 gridView.invalidateViews();
                 System.out.println("reset !");
@@ -195,7 +196,7 @@ public class Default extends AppCompatActivity {
      * @param gridAdapter GridAdapter
      */
     public void updateGridView(int[][] images, GridAdapter gridAdapter) {
-        int[] tabImages = matrixToArray(images);
+        int[] tabImages = matrixUtils.matrixToArray(images);
         gridAdapter.setItems(tabImages);
         gridAdapter.notifyDataSetChanged();
     }
@@ -206,7 +207,7 @@ public class Default extends AppCompatActivity {
      * @param matrix int[][] la matrice qui sert de plateau
      */
     private void setPositionTarget(int[][] matrix) {
-        int[] tab = matrixToArray(matrix);
+        int[] tab = matrixUtils.matrixToArray(matrix);
         int cpt = 0;
         for (int i = 0; i < tab.length; i++) {
             if (tab[i] == targetImg) {
@@ -240,56 +241,5 @@ public class Default extends AppCompatActivity {
             isFinished = true;
         }
         return isFinished;
-    }
-
-    /**
-     * Convertir un tableau 1D en matrice
-     *
-     * @param tabImages int[] tableau 1D
-     * @return un tableau 2D (le plateau sous forme de matrice)
-     */
-    public int[][] arrayToMatrix(int[] tabImages) {
-        int[][] grid = new int[largeur][longueur];
-        try {
-            for (int i = 0; i < tabImages.length; i += largeur) { // ligne : y
-                for (int j = 0; j < longueur; j++) { // col : x
-                    int itemIndex = (i / largeur) * longueur + j;
-                    grid[(i / largeur)][j] = tabImages[itemIndex];
-                }
-            }
-        } catch (Exception e) {
-            System.err.println(e);
-        }
-        return grid;
-    }
-
-    /**
-     * Convertir une matrice 2D en tableau 1D
-     *
-     * @param matrix int [][]
-     * @return un tableau 1D.
-     */
-    public int[] matrixToArray(int[][] matrix) {
-        int[] tab = new int[largeur * longueur];
-        for (int i = 0; i < largeur; i++) { //ligne : y
-            for (int j = 0; j < longueur; j++) { //col : x
-                tab[(i * (longueur) + j)] = matrix[i][j];
-            }
-        }
-        return tab;
-    }
-
-    /**
-     * Afficher la matrice dans la console de run
-     *
-     * @param matrix int[][]
-     */
-    public void printMatrix(int[][] matrix) {
-        for (int i = 0; i < largeur; i++) { //ligne : y
-            for (int j = 0; j < longueur; j++) { //col : x
-                System.out.print(matrix[i][j] + " ");
-            }
-            System.out.println(" ");
-        }
     }
 }
