@@ -2,6 +2,7 @@ package com.example.sokoban;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -32,8 +33,6 @@ public class GameDefault extends AppCompatActivity {
     // placement du personnage
     private int posX = 3;
     private int posY = 3;
-    private int oldPosX = posX;
-    private int oldPosY = posY;
     // taille du plateau
     private final int largeur = 8;
     private final int longueur = 8;
@@ -104,22 +103,20 @@ public class GameDefault extends AppCompatActivity {
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int[][] newMatrix = matrixUtils.arrayToMatrix(images);
-                updateGridView(newMatrix, gridAdapter);
-                gridView.invalidateViews();
-                System.out.println("reset !");
-                posX = 3;
-                posY = 3;
-                oldPosX = 3;
-                oldPosY = 3;
-                imgDroite.setVisibility(View.VISIBLE);
-                imgHaut.setVisibility(View.VISIBLE);
-                imgGauche.setVisibility(View.VISIBLE);
-                imgBas.setVisibility(View.VISIBLE);
-                imgCarreBlanc.setVisibility(View.VISIBLE);
-                textFinished.setVisibility(View.INVISIBLE);
+                restartActivity();
             }
         });
+    }
+
+    /**
+     * Relancer l'activité en cours
+     */
+    public void restartActivity(){
+        Intent intent=new Intent();
+        intent.setClass(this, this.getClass());
+        this.startActivity(intent);
+        this.finish();
+
     }
 
     /**
@@ -135,6 +132,8 @@ public class GameDefault extends AppCompatActivity {
      */
     public void deplacement(int[][] matrix, int newPosX, int newPosY,
                             int afterPosX, int afterPosY, GridAdapter gridAdapter, int sprite) {
+        int oldPosY = posY;
+        int oldPosX = posX;
         if (matrix[newPosX][newPosY] == wallImg) {
             System.out.println("Obstacle Mur ! Impossible de bouger");
         } else if (matrix[newPosX][newPosY] == blockImg || matrix[newPosX][newPosY] == blockValidImg) {
