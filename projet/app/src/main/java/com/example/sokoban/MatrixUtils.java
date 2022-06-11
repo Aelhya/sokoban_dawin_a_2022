@@ -1,5 +1,7 @@
 package com.example.sokoban;
 
+import java.util.ArrayList;
+
 public class MatrixUtils {
 
     int largeur;
@@ -58,5 +60,30 @@ public class MatrixUtils {
             }
             System.out.println(" ");
         }
+    }
+
+    /**
+     * Avoir la position de toutes les cibles
+     * @param targets ArrayList<Integer> tableau avec la position des cibles dans un tab 1D
+     * @param largeur int largeur
+     * @param longueur int longueur
+     * @return Une liste de 2 tableaux : le premier correspond aux x et le second aux y de chaque cible
+     */
+    public static ArrayList<ArrayList<Integer>> getTargetsPositionMatrix(ArrayList<Integer> targets, int largeur, int longueur) {
+        ArrayList<Integer> positionX = new ArrayList<>();
+        ArrayList<Integer> positionY = new ArrayList<>();
+        for(Integer element : targets){
+            int y = element % longueur;
+            int x = (element - y) / largeur;
+            int[][] pos = new int[2][1];
+            pos[0][0] = x;
+            pos[1][0] = y;
+            positionX.add(x);
+            positionY.add(y);
+        }
+        ArrayList<ArrayList<Integer>> position = new ArrayList<>();
+        position.add(positionX);
+        position.add(positionY);
+        return position;
     }
 }

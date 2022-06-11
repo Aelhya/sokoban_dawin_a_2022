@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class Default extends AppCompatActivity {
+public class GameDefault extends AppCompatActivity {
     private GridView gridView;
 
     private final ArrayList<Integer> targets = new ArrayList<>();
@@ -46,7 +46,7 @@ public class Default extends AppCompatActivity {
             wallImg, whiteImg, whiteImg, whiteImg, whiteImg, whiteImg, whiteImg, wallImg,
             wallImg, wallImg, wallImg, wallImg, wallImg, wallImg, wallImg, wallImg};
     public int[][] matrix;
-    private MatrixUtils matrixUtils = new MatrixUtils(largeur, longueur);
+    private final MatrixUtils matrixUtils = new MatrixUtils(largeur, longueur);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +66,7 @@ public class Default extends AppCompatActivity {
         matrix = matrixUtils.arrayToMatrix(images);
 
         gridView = findViewById(R.id.gridView);
-        GridAdapter gridAdapter = new GridAdapter(Default.this, images);
+        GridAdapter gridAdapter = new GridAdapter(GameDefault.this, images);
         gridView.setAdapter(gridAdapter);
 
         // avoir la position des cibles
@@ -212,9 +212,11 @@ public class Default extends AppCompatActivity {
         for (int i = 0; i < tab.length; i++) {
             if (tab[i] == targetImg) {
                 targets.add(cpt, i);
+                System.out.println(i);
                 cpt++;
             }
         }
+        System.out.println(MatrixUtils.getTargetsPositionMatrix(targets, largeur, longueur));
     }
 
     /**
@@ -235,10 +237,18 @@ public class Default extends AppCompatActivity {
      * @return vrai si toute les cibles sont atteintes
      */
     private boolean isAllTargetValid() {
-        // TODO : récupérer les coordonnées de target par une méthode
-        // pour éviter de le faire en dur
-        if (matrix[1][1] == blockValidImg && matrix[5][6] == blockValidImg) {
-            isFinished = true;
+        ArrayList<ArrayList<Integer>> positions = MatrixUtils.getTargetsPositionMatrix(targets, largeur, longueur);
+        int nbTargets = targets.size();
+        int cptTargetsValid = 0;
+        for (int i=0; i< nbTargets; i++){
+            int x = positions.get(0).get(i);
+            int y = positions.get(1).get(i);
+            if (matrix[x][y] == blockValidImg) {
+                cptTargetsValid++;
+                if(cptTargetsValid == nbTargets){
+                    isFinished = true;
+                }
+            }
         }
         return isFinished;
     }

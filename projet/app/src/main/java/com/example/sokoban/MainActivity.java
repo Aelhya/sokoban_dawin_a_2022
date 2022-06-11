@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         if (view.getId() == buttonNiveauUn.getId()) {
-            Intent niveauDefaut = new Intent(this, Default.class);
+            Intent niveauDefaut = new Intent(this, GameDefault.class);
             startActivity(niveauDefaut);
         } else {
             throw new IllegalStateException("Unexpected value: " + view.getId());
