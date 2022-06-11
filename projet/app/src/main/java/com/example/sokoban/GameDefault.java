@@ -27,6 +27,7 @@ public class GameDefault extends AppCompatActivity {
     public int characterRightImg = R.drawable.ic_balle_droite;
     public ImageView imgGauche, imgDroite, imgHaut, imgBas, imgCarreBlanc;
     public TextView textFinished;
+    public Button goHome;
 
     // valeurs par défaut
     private boolean isFinished = false;
@@ -60,6 +61,9 @@ public class GameDefault extends AppCompatActivity {
         textFinished = findViewById(R.id.textFinished);
         textFinished.setVisibility(View.INVISIBLE);
         Button reset = findViewById(R.id.reset);
+        goHome = findViewById(R.id.goHome);
+        goHome.setVisibility(View.INVISIBLE);
+
 
         // transformer la grid view en matrice (tableau 2D)
         matrix = matrixUtils.arrayToMatrix(images);
@@ -71,40 +75,21 @@ public class GameDefault extends AppCompatActivity {
         // avoir la position des cibles
         setPositionTarget(matrix);
         // déplacement à Gauche
-        imgGauche.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                deplacement(matrix, posX, posY - 1, posX, posY - 2, gridAdapter, characterLeftImg);
-            }
-        });
+        imgGauche.setOnClickListener(view -> deplacement(matrix, posX, posY - 1, posX, posY - 2, gridAdapter, characterLeftImg));
         // déplacement à Droite
-        imgDroite.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                deplacement(matrix, posX, posY + 1, posX, posY + 2, gridAdapter, characterRightImg);
-            }
-        });
+        imgDroite.setOnClickListener(view -> deplacement(matrix, posX, posY + 1, posX, posY + 2, gridAdapter, characterRightImg));
         // déplacement en Haut
-        imgHaut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                deplacement(matrix, posX - 1, posY, posX - 2, posY, gridAdapter, characterUpImg);
-            }
-        });
+        imgHaut.setOnClickListener(view -> deplacement(matrix, posX - 1, posY, posX - 2, posY, gridAdapter, characterUpImg));
         // déplacement en Bas
-        imgBas.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                deplacement(matrix, posX + 1, posY, posX + 2, posY, gridAdapter, characterDownImg);
-            }
-        });
+        imgBas.setOnClickListener(view -> deplacement(matrix, posX + 1, posY, posX + 2, posY, gridAdapter, characterDownImg));
 
         // remise en l'état
-        reset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                restartActivity();
-            }
+        reset.setOnClickListener(view -> restartActivity());
+
+        // remise en l'état
+        goHome.setOnClickListener(view -> {
+            Intent home = new Intent(this, MainActivity.class);
+            startActivity(home);
         });
     }
 
@@ -132,8 +117,8 @@ public class GameDefault extends AppCompatActivity {
      */
     public void deplacement(int[][] matrix, int newPosX, int newPosY,
                             int afterPosX, int afterPosY, GridAdapter gridAdapter, int sprite) {
-        int oldPosY = posY;
-        int oldPosX = posX;
+        int oldPosY;
+        int oldPosX;
         if (matrix[newPosX][newPosY] == wallImg) {
             System.out.println("Obstacle Mur ! Impossible de bouger");
         } else if (matrix[newPosX][newPosY] == blockImg || matrix[newPosX][newPosY] == blockValidImg) {
@@ -185,6 +170,7 @@ public class GameDefault extends AppCompatActivity {
             imgBas.setVisibility(View.INVISIBLE);
             imgCarreBlanc.setVisibility(View.INVISIBLE);
             textFinished.setVisibility(View.VISIBLE);
+            goHome.setVisibility(View.VISIBLE);
         }
     }
 

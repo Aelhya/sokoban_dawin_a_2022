@@ -8,4 +8,5 @@
     <string name="app_developpeur_group">LP DAWIN A</string>
     <string name="back">Retour</string>
     <string name="reset">Reset</string>
+    <string name="goHome">Retourner au menu</string>
 </resources>

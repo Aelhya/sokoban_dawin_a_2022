@@ -90,6 +90,18 @@
         app:layout_constraintTop_toBottomOf="@+id/gridView"
         app:layout_constraintVertical_bias="0.843" />
 
+    <Button
+        android:id="@+id/goHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/goHome"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridView"
+        app:layout_constraintVertical_bias="0.502" />
+
     <TextView
         android:id="@+id/textFinished"
         android:layout_width="wrap_content"
@@ -98,6 +110,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gridView" />
+        app:layout_constraintTop_toBottomOf="@+id/gridView"
+        app:layout_constraintVertical_bias="0.2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
