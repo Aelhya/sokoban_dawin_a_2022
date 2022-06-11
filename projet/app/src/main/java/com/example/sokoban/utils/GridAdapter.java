@@ -1,4 +1,4 @@
-package com.example.sokoban;
+package com.example.sokoban.utils;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,7 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
+
+import com.example.sokoban.R;
 
 public class GridAdapter extends BaseAdapter {
 
@@ -48,6 +49,16 @@ public class GridAdapter extends BaseAdapter {
 
     public void setItems(int[] im){
         this.image = im;
+    }
+
+    /**
+     * Mettre à jour la matrice
+     *
+     * @param tabImages      int[] la matrice (plateau) à mettre à jour
+     */
+    public void updateGridView(int[] tabImages) {
+        this.setItems(tabImages);
+        this.notifyDataSetChanged();
     }
 
 }

@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sokoban">
         <activity
-            android:name=".GameDefault"
+            android:name=".game.GameDefault"
             android:exported="false"
             android:screenOrientation="nosensor"/>
         <activity

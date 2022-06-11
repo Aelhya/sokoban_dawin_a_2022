@@ -1,11 +1,12 @@
-package com.example.sokoban;
+package com.example.sokoban.utils;
 
 import java.util.ArrayList;
 
 public class MatrixUtils {
 
-    int largeur;
-    int longueur;
+    private final int largeur;
+    private final int longueur;
+
     public MatrixUtils(int largeur, int longueur) {
         this.largeur = largeur;
         this.longueur = longueur;
@@ -40,10 +41,14 @@ public class MatrixUtils {
      */
     public int[] matrixToArray(int[][] matrix) {
         int[] tab = new int[largeur * longueur];
-        for (int i = 0; i < largeur; i++) { //ligne : y
-            for (int j = 0; j < longueur; j++) { //col : x
-                tab[(i * (longueur) + j)] = matrix[i][j];
+        try {
+            for (int i = 0; i < largeur; i++) { //ligne : y
+                for (int j = 0; j < longueur; j++) { //col : x
+                    tab[(i * (longueur) + j)] = matrix[i][j];
+                }
             }
+        } catch (Exception e) {
+            System.err.println(e);
         }
         return tab;
     }
@@ -54,11 +59,15 @@ public class MatrixUtils {
      * @param matrix int[][]
      */
     public void printMatrix(int[][] matrix) {
-        for (int i = 0; i < largeur; i++) { //ligne : y
-            for (int j = 0; j < longueur; j++) { //col : x
-                System.out.print(matrix[i][j] + " ");
+        try {
+            for (int i = 0; i < largeur; i++) { //ligne : y
+                for (int j = 0; j < longueur; j++) { //col : x
+                    System.out.print(matrix[i][j] + " ");
+                }
+                System.out.println(" ");
             }
-            System.out.println(" ");
+        } catch (Exception e) {
+            System.err.println(e);
         }
     }
 
