@@ -70,7 +70,7 @@ public class GameWithTxtFile extends Game {
     }
 
 
-    public int getTailleLigne(){
+    private int getTailleLigne(){
         // -1 car on ne compte pas la 1ere ligne correspondant aux nums de colonnes
         int countLines = -1;
         InputStream streamCountLines;
@@ -89,7 +89,7 @@ public class GameWithTxtFile extends Game {
         }
         return countLines;
     }
-    public int getTailleColumns(){
+    private int getTailleColumns(){
         InputStream streamCountColumns;
         BufferedReader readerCountColumns;
         String line;
