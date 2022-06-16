@@ -1,4 +1,4 @@
-package com.example.sokoban.utils.db;
+package com.example.sokoban.game.db;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -15,7 +15,7 @@ public class HelperDatabase extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE boards(boardId TEXT, name TEXT, rows INTEGER, columns INTEGER)");
+        db.execSQL("CREATE TABLE boards(_id TEXT PRIMARY KEY, name TEXT, rows INTEGER, columns INTEGER)");
         //db.execSQL("CREATE TABLE rows(_boardId TEXT FOREIGN KEY, row_number INTEGER, description TEXT)");
 
     }
@@ -29,7 +29,7 @@ public class HelperDatabase extends SQLiteOpenHelper {
     public void insertBoards(Boards board){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("boardId", board.getBoard_id());
+        contentValues.put("_id", board.get_id());
         contentValues.put("name", board.getName());
         contentValues.put("rows", board.getRows());
         contentValues.put("columns", board.getColumns());
@@ -41,18 +41,18 @@ public class HelperDatabase extends SQLiteOpenHelper {
     public void updateBoard(Boards board){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("boardId", board.getBoard_id());
+        contentValues.put("_id", board.get_id());
         contentValues.put("name", board.getName());
         contentValues.put("rows", board.getRows());
         contentValues.put("columns", board.getColumns());
 
-        db.update("boards", contentValues, "boardId=?", new String[]{String.valueOf(board.getBoard_id())});
+        db.update("boards", contentValues, "_id=?", new String[]{String.valueOf(board.get_id())});
         db.close();
     }
 
     public void deleteBoard(int board_id){
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete("boards","boardId=?", new String[]{String.valueOf(board_id)});
+        db.delete("boards","_id=?", new String[]{String.valueOf(board_id)});
         db.close();
     }
 
@@ -61,9 +61,9 @@ public class HelperDatabase extends SQLiteOpenHelper {
         return db.rawQuery("SELECT * FROM boards", null);
     }
 
-    public Boards getOneBoard(int board_id){
+    public Boards getOneBoard(String board_id){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = db.query("boards", new String[]{"board_id", "name", "rows", "columns"}, "boardId=?",
+        Cursor c = db.query("boards", new String[]{"_id", "name", "rows", "columns"}, "_id=?",
                 new String[]{String.valueOf(board_id)}, null, null, null);
         c.moveToFirst();
         return new Boards(c.getString(0), c.getString(1), c.getInt(2), c.getInt(3));

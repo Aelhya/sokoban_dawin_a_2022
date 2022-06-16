@@ -7,13 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.sokoban.game.GameDatabase;
 import com.example.sokoban.game.GameDefault;
 import com.example.sokoban.game.GameWithTxtFile;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button buttonNiveauUn;
-    Button buttonNiveauDeux;
+    Button buttonNiveauUn, buttonNiveauDeux, buttonNiveauTrois;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +24,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonNiveauUn.setOnClickListener(this);
         buttonNiveauDeux = findViewById(R.id.buttonNiveau2);
         buttonNiveauDeux.setOnClickListener(this);
+
+        buttonNiveauTrois = findViewById(R.id.buttonNiveau3);
+        buttonNiveauTrois.setOnClickListener(this);
     }
 
     @Override
@@ -34,6 +37,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if(view.getId() == buttonNiveauDeux.getId()){
             Intent niveauAvecFichierText = new Intent(this, GameWithTxtFile.class);
             startActivity(niveauAvecFichierText);
+        }
+        else if(view.getId() == buttonNiveauTrois.getId()) {
+            Intent niveauDatabase = new Intent(this, GameDatabase.class);
+            startActivity(niveauDatabase);
         }
         else {
             throw new IllegalStateException("Unexpected value: " + view.getId());

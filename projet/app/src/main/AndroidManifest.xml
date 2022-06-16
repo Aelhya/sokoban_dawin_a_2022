@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.sokoban">
-<!--    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>-->
-<!--    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>-->
-    <uses-feature android:name="android.hardware.screen.portrait"/>
+
+    <uses-feature android:name="android.hardware.screen.portrait" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,13 +12,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sokoban">
         <activity
+            android:name=".game.GameDatabase"
+            android:exported="false" />
+        <activity
+            android:name=".game.DetailBoard"
+            android:exported="false" />
+        <activity
+            android:name=".game.ListeBoard"
+            android:exported="false" />
+        <activity
             android:name=".game.GameDefault"
             android:exported="false"
             android:screenOrientation="nosensor"/>
         <activity
             android:name=".game.GameWithTxtFile"
             android:exported="false"
-            android:screenOrientation="nosensor"/>
+            android:screenOrientation="nosensor" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

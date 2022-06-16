@@ -5,54 +5,60 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".game.GameDatabase">
+    tools:context=".game.DetailBoard">
 
     <EditText
-        android:id="@+id/board_id"
+        android:id="@+id/rows_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:autofillHints=""
         android:ems="10"
-        android:hint="@string/id_du_plateau"
         android:inputType="textPersonName"
-        android:minHeight="48dp" />
+        android:text="Name" />
 
     <EditText
-        android:id="@+id/name"
+        android:id="@+id/columns_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:autofillHints=""
         android:ems="10"
-        android:hint="@string/description_du_plateau"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:textColorHint="#757575" />
+        android:text="Name" />
 
     <EditText
-        android:id="@+id/rows"
+        android:id="@+id/board_id_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:autofillHints=""
         android:ems="10"
-        android:hint="@string/nombre_de_lignes"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:textColorHint="#757575" />
+        android:text="Name" />
 
     <EditText
-        android:id="@+id/columns"
+        android:id="@+id/name_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:autofillHints=""
         android:ems="10"
-        android:hint="@string/nombre_de_colonnes"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:textColorHint="#757575" />
+        android:text="Name" />
 
-    <Button
-        android:id="@+id/button"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/button" />
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Modifier" />
+
+        <Button
+            android:id="@+id/button_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Supprimer" />
+    </LinearLayout>
 </LinearLayout>
