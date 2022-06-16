@@ -50,7 +50,7 @@ public class HelperDatabase extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void deleteBoard(int board_id){
+    public void deleteBoard(String board_id){
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete("boards","_id=?", new String[]{String.valueOf(board_id)});
         db.close();

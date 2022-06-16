@@ -36,7 +36,7 @@ public class ListeBoard extends AppCompatActivity {
 
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                TextView t = view.findViewById(R.id.board_id);
+                TextView t = view.findViewById(R.id.board_id_list);
                 Intent intent = new Intent(ListeBoard.this, DetailBoard.class);
                 intent.putExtra("board_id", t.getText().toString());
                 startActivity(intent);
