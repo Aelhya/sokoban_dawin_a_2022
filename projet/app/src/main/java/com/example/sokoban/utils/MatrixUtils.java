@@ -83,7 +83,7 @@ public class MatrixUtils {
         ArrayList<Integer> positionY = new ArrayList<>();
         for(Integer element : targets){
             int y = element % longueur;
-            int x = (element - y) / largeur;
+            int x = (element - y) / longueur;
             int[][] pos = new int[2][1];
             pos[0][0] = x;
             pos[1][0] = y;
