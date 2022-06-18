@@ -1,8 +1,5 @@
 package com.example.sokoban.game;
 
-import android.app.Activity;
-import android.content.Intent;
-
 import com.example.sokoban.R;
 
 public class GameRules {

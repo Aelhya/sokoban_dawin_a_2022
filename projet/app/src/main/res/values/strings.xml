@@ -9,4 +9,9 @@
     <string name="back">Retour</string>
     <string name="reset">Reset</string>
     <string name="goHome">Retourner au menu</string>
+    <string name="nombre_de_lignes">Nombre de lignes</string>
+    <string name="nombre_de_colonnes">Nombre de colonnes</string>
+    <string name="id_du_plateau">Id du plateau</string>
+    <string name="description_du_plateau">Description du plateau</string>
+    <string name="button">Button</string>
 </resources>

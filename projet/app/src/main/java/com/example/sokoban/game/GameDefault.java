@@ -1,8 +1,6 @@
 package com.example.sokoban.game;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.GridView;
 
 import com.example.sokoban.R;
@@ -33,17 +31,7 @@ public class GameDefault extends Game {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_default);
-        // les images des boutons
-        imgGauche = findViewById(R.id.touche_gauche);
-        imgDroite = findViewById(R.id.touche_droite);
-        imgHaut = findViewById(R.id.touche_haut);
-        imgBas = findViewById(R.id.touche_bas);
-        imgCarreBlanc = findViewById(R.id.imageCarreBlanc);
-        textFinished = findViewById(R.id.textFinished);
-        textFinished.setVisibility(View.INVISIBLE);
-        Button reset = findViewById(R.id.reset);
-        goHome = findViewById(R.id.goHome);
-        goHome.setVisibility(View.INVISIBLE);
+        setElementsOnGame();
 
         // transformer la grid view en matrice (tableau 2D)
         matrix = matrixUtils.arrayToMatrix(images);
