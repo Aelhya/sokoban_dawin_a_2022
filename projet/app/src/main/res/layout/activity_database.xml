@@ -4,8 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:orientation="vertical"
-    tools:context=".game.GameDatabase">
+    android:paddingStart="10px"
+    android:paddingRight="10px"
+    tools:context=".game.gameDatabase.GameDatabaseChoice">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/id_du_plateau" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <EditText
         android:id="@+id/board_id"
@@ -16,6 +29,20 @@
         android:hint="@string/id_du_plateau"
         android:inputType="textPersonName"
         android:minHeight="48dp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/description_du_plateau" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <EditText
         android:id="@+id/name"
@@ -28,6 +55,20 @@
         android:minHeight="48dp"
         android:textColorHint="#757575" />
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/nombre_de_lignes" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <EditText
         android:id="@+id/rows"
         android:layout_width="match_parent"
@@ -38,6 +79,20 @@
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textColorHint="#757575" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/nombre_de_colonnes" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <EditText
         android:id="@+id/columns"
@@ -50,9 +105,13 @@
         android:minHeight="48dp"
         android:textColorHint="#757575" />
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/button" />
+        android:text="Créer le plateau" />
 </LinearLayout>

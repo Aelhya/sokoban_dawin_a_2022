@@ -7,6 +7,7 @@ public class Boards {
     String name;
     int rows;
     int columns;
+    String description;
 
     public Boards() {
     }
@@ -24,6 +25,23 @@ public class Boards {
         this.columns = columns;
     }
 
+    public Boards(String _id, String name, int rows, int columns, String description) {
+        this._id = _id;
+        this.name = name;
+        this.rows = rows;
+        this.columns = columns;
+        this.description = description;
+    }
+
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public String get_id() {
         return _id;
     }
@@ -31,6 +49,7 @@ public class Boards {
     public void set_id(String _id) {
         this._id = _id;
     }
+
     public String getName() {
         return name;
     }

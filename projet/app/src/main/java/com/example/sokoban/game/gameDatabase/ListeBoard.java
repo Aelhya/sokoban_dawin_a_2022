@@ -1,4 +1,4 @@
-package com.example.sokoban.game;
+package com.example.sokoban.game.gameDatabase;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,6 +18,7 @@ public class ListeBoard extends AppCompatActivity {
 
     ListView ls;
     HelperDatabase h = new HelperDatabase(ListeBoard.this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +33,7 @@ public class ListeBoard extends AppCompatActivity {
 
         ls.setAdapter(adapter);
 
-        ls.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        ls.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

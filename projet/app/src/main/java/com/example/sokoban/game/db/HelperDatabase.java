@@ -15,9 +15,8 @@ public class HelperDatabase extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE boards(_id TEXT PRIMARY KEY, name TEXT, rows INTEGER, columns INTEGER)");
+        db.execSQL("CREATE TABLE boards(_id TEXT PRIMARY KEY, name TEXT, rows INTEGER, columns INTEGER, description TEXT)");
         //db.execSQL("CREATE TABLE rows(_boardId TEXT FOREIGN KEY, row_number INTEGER, description TEXT)");
-
     }
 
     @Override
@@ -26,46 +25,48 @@ public class HelperDatabase extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void insertBoards(Boards board){
+    public void insertBoards(Boards board) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("_id", board.get_id());
         contentValues.put("name", board.getName());
         contentValues.put("rows", board.getRows());
         contentValues.put("columns", board.getColumns());
+        contentValues.put("description", board.getDescription());
 
         db.insert("boards", null, contentValues);
         db.close();
     }
 
-    public void updateBoard(Boards board){
+    public void updateBoard(Boards board) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("_id", board.get_id());
         contentValues.put("name", board.getName());
         contentValues.put("rows", board.getRows());
         contentValues.put("columns", board.getColumns());
+        contentValues.put("description", board.getDescription());
 
         db.update("boards", contentValues, "_id=?", new String[]{String.valueOf(board.get_id())});
         db.close();
     }
 
-    public void deleteBoard(String board_id){
+    public void deleteBoard(String board_id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete("boards","_id=?", new String[]{String.valueOf(board_id)});
+        db.delete("boards", "_id=?", new String[]{String.valueOf(board_id)});
         db.close();
     }
 
-    public Cursor getAllBoards(){
+    public Cursor getAllBoards() {
         SQLiteDatabase db = this.getReadableDatabase();
         return db.rawQuery("SELECT * FROM boards", null);
     }
 
-    public Boards getOneBoard(String board_id){
+    public Boards getOneBoard(String board_id) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = db.query("boards", new String[]{"_id", "name", "rows", "columns"}, "_id=?",
+        Cursor c = db.query("boards", new String[]{"_id", "name", "rows", "columns", "description"}, "_id=?",
                 new String[]{String.valueOf(board_id)}, null, null, null);
         c.moveToFirst();
-        return new Boards(c.getString(0), c.getString(1), c.getInt(2), c.getInt(3));
+        return new Boards(c.getString(0), c.getString(1), c.getInt(2), c.getInt(3), c.getString(4));
     }
 }

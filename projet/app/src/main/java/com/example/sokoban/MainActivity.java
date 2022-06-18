@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.sokoban.game.GameDatabase;
+import com.example.sokoban.game.gameDatabase.Administrator;
 import com.example.sokoban.game.GameDefault;
 import com.example.sokoban.game.GameWithTxtFile;
 
@@ -34,15 +34,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (view.getId() == buttonNiveauUn.getId()) {
             Intent niveauDefaut = new Intent(this, GameDefault.class);
             startActivity(niveauDefaut);
-        } else if(view.getId() == buttonNiveauDeux.getId()){
+        } else if (view.getId() == buttonNiveauDeux.getId()) {
             Intent niveauAvecFichierText = new Intent(this, GameWithTxtFile.class);
             startActivity(niveauAvecFichierText);
-        }
-        else if(view.getId() == buttonNiveauTrois.getId()) {
-            Intent niveauDatabase = new Intent(this, GameDatabase.class);
+        } else if (view.getId() == buttonNiveauTrois.getId()) {
+            Intent niveauDatabase = new Intent(this, Administrator.class);
             startActivity(niveauDatabase);
-        }
-        else {
+        } else {
             throw new IllegalStateException("Unexpected value: " + view.getId());
         }
     }

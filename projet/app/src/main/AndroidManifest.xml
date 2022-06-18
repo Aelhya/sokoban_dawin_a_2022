@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.sokoban">
+    package="com.example.sokoban" >
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.OPEN_EXTERNAL_STORAGE" />
 
     <uses-feature android:name="android.hardware.screen.portrait" />
 
@@ -8,22 +11,29 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Sokoban">
+        android:theme="@style/Theme.Sokoban" >
         <activity
-            android:name=".game.GameDatabase"
+            android:name=".game.gameDatabase.GameDatabase"
             android:exported="false" />
         <activity
-            android:name=".game.DetailBoard"
+            android:name=".game.gameDatabase.Administrator"
             android:exported="false" />
         <activity
-            android:name=".game.ListeBoard"
+            android:name=".game.gameDatabase.GameDatabaseChoice"
+            android:exported="false" />
+        <activity
+            android:name=".game.gameDatabase.DetailBoard"
+            android:exported="false" />
+        <activity
+            android:name=".game.gameDatabase.ListeBoard"
             android:exported="false" />
         <activity
             android:name=".game.GameDefault"
             android:exported="false"
-            android:screenOrientation="nosensor"/>
+            android:screenOrientation="nosensor" />
         <activity
             android:name=".game.GameWithTxtFile"
             android:exported="false"
@@ -31,7 +41,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:screenOrientation="nosensor">
+            android:screenOrientation="nosensor" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
